@@ -1,0 +1,27 @@
+#selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  flex-wrap: wrap;
+  margin: 2rem;
+  column-gap: 3rem;
+
+  > a {
+    font-size: 2rem;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: rgb(65, 57, 57);
+    border: 5px solid #2f00ff;
+    width: 12rem;
+    padding: 3rem 0;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: #2f00ff;
+      transform: scale(1.2);
+      border-color: #2f00ff;
+      color: white;
+    }
+  }
+}

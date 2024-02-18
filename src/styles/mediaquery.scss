@@ -1,0 +1,95 @@
+$laptop: "1000px";
+$tablet: "600px";
+$mobile: "450px";
+
+@media (max-width: $laptop) {
+  #result {
+    > h2 {
+      font-size: 2.5rem;
+    }
+    > p {
+      font-size: 1.4rem;
+    }
+    > .list-container {
+      margin: 2rem 0;
+      gap: 2rem;
+
+      > ul {
+        > h3 {
+          font-size: 2.3rem;
+        }
+        > div {
+          li {
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  #result {
+    > h2 {
+      font-size: 2.2rem;
+    }
+    > p {
+      font-size: 1.2rem;
+    }
+    > .list-container {
+      margin: 1.5rem 0;
+      gap: 5rem;
+
+      > ul {
+        > h3 {
+          font-size: 1.6rem;
+        }
+        > div {
+          li {
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+
+  #learning{
+    .after-start {
+      h3 {
+        font-size: 2rem;
+      }
+      .btnContainer {
+        button {
+          padding: 0.6rem 1.2rem;
+        }
+      }
+    }
+  }
+
+  #result {
+    > h2 {
+      font-size: 2rem;
+    }
+    > p {
+      font-size: 1rem;
+    }
+    > .list-container {
+      margin: 1.5rem 0;
+      gap: 1rem;
+
+      > ul {
+        > h3 {
+          font-size: 1.6rem;
+        }
+        > div {
+          li {
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+}

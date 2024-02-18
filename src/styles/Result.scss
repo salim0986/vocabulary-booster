@@ -1,0 +1,50 @@
+#result {
+  margin: 2rem;
+  > h2 {
+    font-size: 3rem;
+    font-family: sans-serif;
+  }
+  > p {
+    font-size: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    > span {
+      font-weight: 700;
+    }
+    > .fail {
+      color: red;
+    }
+    > .pass {
+      color: green;
+    }
+  }
+  > .list-container {
+    display: flex;
+    margin: 2rem;
+    justify-content: center;
+    gap: 5rem;
+
+    >ul{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        >h3{
+            font-size: 2rem;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        >div{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            li{
+                font-size: 1.4rem;
+                font-weight: 200;
+                list-style-type: none;
+                text-transform: capitalize;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+        }
+    }
+  }
+}

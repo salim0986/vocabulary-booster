@@ -1,0 +1,20 @@
+$bg-color: rgb(254, 248, 236);
+
+*,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  scroll-behavior: smooth;
+  background-color: $bg-color;
+}
+
+@import "Navbar";
+@import "Selection";
+@import "Learning";
+@import "Quiz";
+@import "Result";
+@import "mediaquery";

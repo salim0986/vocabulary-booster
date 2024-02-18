@@ -1,0 +1,26 @@
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #2f00ff;
+  margin-bottom: 2rem;
+  > span > img {
+    border-radius: 50%;
+    // margin-left: 2rem;
+    width: 4rem;
+  }
+  > div {
+    display: flex;
+    gap: 1rem;
+    font-size: xx-large;
+    > a {
+      color: white;
+      text-decoration: none;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
