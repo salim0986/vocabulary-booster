@@ -55,8 +55,7 @@ $mobile: "450px";
 }
 
 @media (max-width: $mobile) {
-
-  #learning{
+  #learning {
     .after-start {
       h3 {
         font-size: 2rem;
@@ -91,5 +90,9 @@ $mobile: "450px";
         }
       }
     }
+  }
+
+  #selection > a {
+    margin-bottom: 2rem;
   }
 }
