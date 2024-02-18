@@ -37,7 +37,7 @@ const Result = () => {
           <h3>Learned Word</h3>
           <div>
             {wordsArr.map((word, i) => {
-              return <li key={i}>{transArr[i]}</li>;
+              return <li key={word}>{transArr[i]}</li>;
             })}
           </div>
         </ul>
@@ -45,7 +45,7 @@ const Result = () => {
           <h3>Chosen Option</h3>
           <div>
             {wordsArr.map((word, i) => {
-              return <li key={i}>{chosenOptions[i]}</li>;
+              return <li key={word}>{chosenOptions[i]}</li>;
             })}
           </div>
         </ul>
