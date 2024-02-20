@@ -40,7 +40,6 @@ const Learning = () => {
       sentence = sentence + "," + ranArr[i];
     }
 
-    const TRANS_API_KEY = "59dab90dadmshdd21ecbcad5ad12p16a05fjsn715af19b6b6c";
     const TRAN_API_HOST = "microsoft-translator-text.p.rapidapi.com";
 
     const translateOptions = {
@@ -54,7 +53,7 @@ const Learning = () => {
       },
       headers: {
         "content-type": "application/json",
-        "X-RapidAPI-Key": TRANS_API_KEY,
+        "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
         "X-RapidAPI-Host": TRAN_API_HOST,
       },
       data: [
