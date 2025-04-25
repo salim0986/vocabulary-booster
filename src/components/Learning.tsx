@@ -5,8 +5,6 @@ import axios from "axios";
 import Loader from "./Loader";
 import { useDispatch } from "react-redux";
 import { transSave, wordsSave } from "../redux/reducers";
-import { HiSpeakerWave } from "react-icons/hi2";
-import { FaClock } from "react-icons/fa";
 
 const Learning = () => {
   const lanCode = useSearchParams()[0].get("lan")!;
@@ -14,10 +12,8 @@ const Learning = () => {
   const dispatch = useDispatch();
   const [count, setCount] = useState<number>(0);
   const [ranArr] = useState<string[]>(generate(8));
-  const [audio, setAudio] = useState<HTMLAudioElement>();
   const [transArr, setTransArr] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isAudioLoading, setIsAudioLoading] = useState<boolean>(false);
 
   const handleNext = () => {
     setCount((prev) => prev + 1);
@@ -34,85 +30,37 @@ const Learning = () => {
 
   const handleStart = async () => {
     setIsLoading(true);
-
     let sentence = "";
     for (let i = 0; i < ranArr.length; i++) {
-      sentence = sentence + "," + ranArr[i];
+      sentence = sentence + " " + ranArr[i];
     }
-
-    const TRAN_API_HOST = "microsoft-translator-text.p.rapidapi.com";
 
     const translateOptions = {
       method: "POST",
-      url: "https://microsoft-translator-text.p.rapidapi.com/translate",
-      params: {
-        "to[0]": lanCode,
-        "api-version": "3.0",
-        profanityAction: "NoAction",
-        textType: "plain",
-      },
+      url: "https://translateai.p.rapidapi.com/google/translate/text",
       headers: {
-        "content-type": "application/json",
-        "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
-        "X-RapidAPI-Host": TRAN_API_HOST,
+        "x-rapidapi-key": "59dab90dadmshdd21ecbcad5ad12p16a05fjsn715af19b6b6c",
+        "x-rapidapi-host": "translateai.p.rapidapi.com",
+        "Content-Type": "application/json",
       },
-      data: [
-        {
-          Text: sentence,
-        },
-      ],
+      data: {
+        origin_language: "es",
+        target_language: lanCode,
+        input_text: sentence,
+      },
     };
 
     try {
       const { data } = await axios.request(translateOptions);
-      const translation: string = data[0].translations[0].text;
-      const newTransArr: string[] = translation.split(",").slice(1);
+      const translation: string = data.translation;
+      console.log(translation);
+      const newTransArr: string[] = translation.split(" ");
       setTransArr(newTransArr);
     } catch (error) {
       console.error(error);
     }
     setIsLoading(false);
   };
-
-  useEffect(() => {
-    let isOk = true;
-
-    const API_KEY = "59dab90dadmshdd21ecbcad5ad12p16a05fjsn715af19b6b6c";
-    const API_HOST = "alloy-text-to-speech.p.rapidapi.com";
-
-    const options = {
-      method: "POST",
-      url: "https://alloy-text-to-speech.p.rapidapi.com/tts/alloy",
-      headers: {
-        "content-type": "application/json",
-        "X-RapidAPI-Key": API_KEY,
-        "X-RapidAPI-Host": API_HOST,
-      },
-      data: {
-        model: "tts-1",
-        voice: "nova",
-        input: transArr[count],
-        response_format: "mp3",
-        speed: 1,
-      },
-    };
-
-    isOk &&
-      (async () => {
-        setIsAudioLoading(true);
-        setAudio(undefined);
-        try {
-          const { data } = await axios.request(options);
-          setAudio(new Audio(data.media_url));
-        } catch (error) {
-          console.error(error);
-        }
-        setIsAudioLoading(false);
-      })();
-    return () => {
-      isOk = false;
-    };
-  }, [count, transArr]);
 
   return (
     <div id="learning">
@@ -125,9 +73,6 @@ const Learning = () => {
               {ranArr[count].toLocaleUpperCase()}
             </h3>
             <div className="btnContainer">
-              <button className="player" onClick={() => audio?.play()}>
-                {!isAudioLoading ? <HiSpeakerWave /> : <FaClock />}
-              </button>
               <button onClick={handlePrev} disabled={count != 0 ? false : true}>
                 Previous
               </button>
